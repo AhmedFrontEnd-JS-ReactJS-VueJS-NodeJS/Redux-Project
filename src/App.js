@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
 import './App.css';
+import Nav from "./Components/Nav";
+import Video from "./Components/Video";
 
 function App() {
+  const [counter, setCounter] = useState(0);
+  const [toggle, setToggle] = useState(false);
+
+  const increment = (type) => {
+    if(type == 'plus'){
+      // console.log(type);
+      setCounter(prev => prev + 1)
+    }else{
+      setCounter(prev => prev - 1)
+    }
+  }
+  const toggler=()=>{
+    setToggle((prev) => !prev);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-         Hello
-        </a>
-      </header>
-    </div>
+    <>
+    
+    <Nav/>
+    <Video nnumber={counter}/>
+
+    </>
   );
 }
 
